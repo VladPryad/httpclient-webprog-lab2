@@ -1,0 +1,26 @@
+{
+  "name": "http-lab2-webprog",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "bootstrap.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/bootstrap.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladPryad/httpclient-webprog-lab2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladPryad/httpclient-webprog-lab2/issues"
+  },
+  "homepage": "https://github.com/VladPryad/httpclient-webprog-lab2#readme"
+}
