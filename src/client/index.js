@@ -1,11 +1,28 @@
 import axios from 'axios';
 import * as jsdom from "jsdom";
 import url from 'url';
+import express from 'express';
+
+const port = 4000;
 
 export default async () => {
+    const app = express();
+
+    app.use("/", (req, res) => {
+        client(req.query.uri)
+        .then(value => {
+            res.send(value);
+        });
+    });
+
+    app.listen( process.env.PORT || port, () => {
+        console.log(`====== API is running at port ${port} ======`)
+    })
+}
+
+export const client = async (uri) => {
     console.log('====== Client is running ======')
 
-    const uri = "http://localhost:3000/mainpage.html";
     const response = await axios.get(uri);
 
     const dom = new jsdom.JSDOM(response.data);
@@ -15,11 +32,8 @@ export default async () => {
 
     const processedUri = `http://${url.parse(uri).host}${background.slice(background.indexOf(".") + 1)}`;
 
-    console.log("=====================");
-
-    console.log(`Links from page: ${href}`);
-
-    console.log(`Background image: ${processedUri}`);
-
-    console.log("=====================");
+    return {
+        href,
+        processedUri
+    }
 }
